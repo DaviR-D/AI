@@ -30,11 +30,11 @@ class DepthLimitedSearch:
 
 
 
-nome_origem = input("Digite a cidade de origem: ")
-nome_destino = input("Digite a cidade de destino: ")
+#nome_origem = input("Digite a cidade de origem: ")
+#nome_destino = input("Digite a cidade de destino: ")
 
-start_city = graph[nome_origem]
-goal_city = graph[nome_destino]
+#start_city = graph[nome_origem]
+#goal_city = graph[nome_destino]
 
-DepthLimitedSearch(start_city, goal_city, 1).search()
+#DepthLimitedSearch(start_city, goal_city, 1).search()
 
