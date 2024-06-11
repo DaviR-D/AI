@@ -15,13 +15,33 @@ def generate_next_states(state, visited_states):
                 new_state[stack].append(new_state[ stack + stack2].pop())
                 if(is_valid_state(new_state)):        
                     if(new_state not in visited_states):
-                        print(new_state)                      
-                       
+                        valid_states.append(new_state)
+    return valid_states                     
+
+def bfs(initial_state, final_state):
+    visited_states = []
+    queue = [initial_state]
+    predecessors = {tuple(map(tuple, initial_state)): None}
+
+    while queue:
+        state = queue.pop(0)
+        visited_states.append(state)
+        if state == final_state:
+            path = []
+            while state is not None:
+                path.append(state)
+                state = predecessors[tuple(map(tuple, state))]
+            path.reverse()
+            for step in path:
+                print(step)
+            return
+        for next_state in generate_next_states(state, visited_states):
+            if(next_state not in visited_states):
+                queue.append(next_state)
+                predecessors[tuple(map(tuple, next_state))] = state
 
 initial_state = [[5,4,3,2,1], [], []]
 
 final_state = [[], [], [5,4,3,2,1]]
 
-visited_states = []
-
-generate_next_states(initial_state, visited_states)
+bfs(initial_state, final_state)
